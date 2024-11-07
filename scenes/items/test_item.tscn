@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdc8eji8sshq1"]
+
+[ext_resource type="Script" path="res://scripts/pickable_items/test_item.gd" id="1_37lpu"]
+[ext_resource type="Texture2D" uid="uid://gum5fe66lvad" path="res://sprites/pickable_items/Toast.png" id="2_m5c6q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ewrrr"]
+
+[node name="TestItem" type="Node2D"]
+script = ExtResource("1_37lpu")
+item_texture = ExtResource("2_m5c6q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_m5c6q")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.62482, 1.62482)
+shape = SubResource("CircleShape2D_ewrrr")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
